@@ -1,3 +1,7 @@
+body {
+  background-color: wheat;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -28,4 +32,23 @@ nav {
 nav a {
   color: white;
   margin-right: 10px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.logout-container {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #f44336; /* Red background color for logout */
+  color: white;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.logout-text {
+  font-weight: bold;
 }

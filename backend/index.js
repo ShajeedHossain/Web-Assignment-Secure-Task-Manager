@@ -14,8 +14,10 @@ app.use(express.urlencoded({ extended: false }));
 
 // route imports
 const homeRoutes = require("./routes/homeRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 //routes
+app.use("/user", userRoutes);
 app.use("/", homeRoutes);
 
 //db connection

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserApi from "../api/UserApi";
+import { useAuthContext } from "../hooks/useAuthContext";
 import style from "../style/Home.module.css";
 import { formatDateAndTime } from "../utilities/formatDate";
 export default function Home() {
@@ -22,6 +23,14 @@ export default function Home() {
     3: "Low",
   };
 
+  const { user, logout, newUser } = useAuthContext();
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    logout();
+    navigate("/login");
+  };
   // Sort By Date
   useEffect(() => {
     console.log("SORT DATE EFFECT :", sortDate);
@@ -111,6 +120,11 @@ export default function Home() {
 
   return (
     <div>
+      <div className={style["navbar"]}>
+        <div className={style["logout-container"]} onClick={handleLogout}>
+          <span className={style["logout-text"]}>Logout</span>
+        </div>
+      </div>
       <div className={style["filter-sort"]}>
         <form>
           <div>
