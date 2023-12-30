@@ -15,19 +15,6 @@ export default function TaskDetails() {
   const { task } = location.state;
   const { title, description, dueDate, priority, categories, completed } = task;
   const [completeStatus, setCompleteStatus] = useState(completed);
-  //     {
-  //     "_id": "654c89b5ccd284640d863930",
-  //     "title": "abdfds",
-  //     "description": "dsfsdfsd",
-  //     "dueDate": "2023-11-10T00:00:00.000Z",
-  //     "priority": 2,
-  //     "completed": false,
-  //     "categories": [
-  //         "sdf",
-  //         "vdfgd"
-  //     ],
-  //     "__v": 0
-  // }
   console.log("TASK DETAILS :", task);
 
   useEffect(() => {

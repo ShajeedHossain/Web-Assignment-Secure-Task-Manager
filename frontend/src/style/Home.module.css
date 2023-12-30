@@ -97,3 +97,24 @@
 .logout-text {
   font-weight: bold;
 }
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.create-new-task-btn {
+  background-color: #4caf50; /* Green background color */
+  color: white; /* White text color */
+  width: 100%;
+}
+
+.create-new-task-btn-large {
+  padding: 15px 30px; /* Adjust padding to make the button larger */
+  text-align: center; /* Align text to the left */
+}
+
+.create-new-task-btn:hover {
+  background-color: #32cd32; /* Change the background color on hover */
+}

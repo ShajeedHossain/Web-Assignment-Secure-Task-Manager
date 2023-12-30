@@ -85,8 +85,9 @@ export default function Home() {
   useEffect(() => {
     console.log("Get Task By Priority :");
     if (searchBox) {
+      const lowercasedSearchBox = searchBox.toLowerCase();
       const newData = storeTaskList.filter((task) =>
-        task.title?.includes(searchBox)
+        task.title?.toLowerCase().includes(lowercasedSearchBox)
       );
       console.log("New DATA", newData);
       setTaskList([...newData]);
@@ -124,6 +125,14 @@ export default function Home() {
         <div className={style["logout-container"]} onClick={handleLogout}>
           <span className={style["logout-text"]}>Logout</span>
         </div>
+      </div>
+      <div className={style["centered-container"]}>
+        <Link
+          to="/create-task"
+          className={`${style["create-new-task-btn"]} ${style["create-new-task-btn-large"]}`}
+        >
+          Create New Task
+        </Link>
       </div>
       <div className={style["filter-sort"]}>
         <form>
