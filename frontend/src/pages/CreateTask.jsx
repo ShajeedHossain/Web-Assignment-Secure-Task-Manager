@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserApi from "../api/UserApi";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { formatDateAndTime } from "../utilities/formatDate";
 export default function CreateTask() {
   const [error, setError] = useState(false);
@@ -18,6 +19,7 @@ export default function CreateTask() {
   const [category, setCategory] = useState(false);
   const [dueDate, setDueDate] = useState(false);
   const [priority, setPriority] = useState(false);
+  const { user } = useAuthContext();
 
   const navigate = useNavigate();
 
@@ -44,6 +46,7 @@ export default function CreateTask() {
       const response = await UserApi.post("/create-task", formDataObject, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${user}`,
         },
       });
       toast.success("Task added successfully...", {
@@ -75,6 +78,7 @@ export default function CreateTask() {
       const response = await UserApi.put("/update-task", formDataObject, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${user}`,
         },
       });
       toast.success("Task updated successfully...", {

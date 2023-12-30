@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserApi from "../api/UserApi";
+import { useAuthContext } from "../hooks/useAuthContext";
 import style from "../style/TaskDetails.module.css";
 import { formatDateAndTime } from "../utilities/formatDate";
 
@@ -15,6 +16,7 @@ export default function TaskDetails() {
   const { task } = location.state;
   const { title, description, dueDate, priority, categories, completed } = task;
   const [completeStatus, setCompleteStatus] = useState(completed);
+  const { user } = useAuthContext();
   console.log("TASK DETAILS :", task);
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export default function TaskDetails() {
       const response = await UserApi.put("/update-task", tempObj, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${user}`,
         },
       });
       setLoading(false);
@@ -72,6 +75,7 @@ export default function TaskDetails() {
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user}`,
           },
         }
       );

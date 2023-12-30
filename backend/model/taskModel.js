@@ -23,6 +23,10 @@ const taskSchema = new mongoose.Schema({
       type: String,
     },
   ],
+  user_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 // Create a Mongoose model

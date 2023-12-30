@@ -104,6 +104,7 @@ export default function Home() {
         const response = await UserApi.get("/get-tasks", {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${user}`,
           },
         });
         console.log("Tasks: ", response.data.task);

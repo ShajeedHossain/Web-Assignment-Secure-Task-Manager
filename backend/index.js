@@ -23,7 +23,7 @@ app.use("/", homeRoutes);
 //db connection
 mongoose
   .connect(process.env.DB_URL, {})
-  .then(() => console.log("connection successful"))
+  .then(() => console.log("DB Connection Successful"))
   .catch((err) => console.log(err));
 
 //error handler
